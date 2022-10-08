@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hong.member.mapper.MemberMapper">
+	
+	<!-- 로그인 처리 -->
+	<select id="login" resultType="com.hong.member.vo.LoginVO">
+		select id, pw from member where id=#{id} and pw=#{pw} 
+	</select>
+	
+	<!-- 회원가입 처리 -->
+	<insert id="write">
+		insert into member(id, pw, name, birth, email) 
+		values (#{id}, #{pw}, #{name}, #{birth}, #{email})
+	</insert>
+	
+	<!-- id 중복 체크 처리 -->
+	<select id="idCheck" resultType="java.lang.String">
+		select id from member 
+		where id = #{id}
+	</select>
+	
+</mapper>
